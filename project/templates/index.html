@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>順番決めアプリ</title>
+</head>
+<body>
+    <h1>順番決めアプリ</h1>
+    <form action="/add" method="post">
+        <input type="text" name="name" placeholder="参加者の名前を入力" required>
+        <button type="submit">追加</button>
+    </form>
+    <h2>参加者一覧</h2>
+    <ol>
+        {% for participant in participants %}
+            <li>{{ participant }}</li>
+        {% endfor %}
+    </ol>
+    
+    {% if shuffled %}
+        <p>ランダムな順番にしました！</p>
+    {% endif %}
+    <form action="/shuffle" method="get">
+        <button type="submit">順番を決める</button>
+    </form>
+
+    <form action="/reset" method="post">
+        <button type="submit" style="color: red;">リセット</button>
+    </form>
+    
+</body>
+</html>
